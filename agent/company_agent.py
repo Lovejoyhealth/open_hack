@@ -133,15 +133,21 @@ class CompanyAgent(BaseAgent):
     
     def _schedule_meeting(self, message: str) -> str:
         """Schedule a new meeting"""
-        # Extract meeting details (simplified)
+        # Extract meeting details from message
+        meeting_match = re.search(r'meeting[:\s]+(.+)', message, re.IGNORECASE)
+        if meeting_match:
+            meeting_title = meeting_match.group(1).strip()
+        else:
+            meeting_title = message
+            
         meeting = {
             "id": len(self.meetings) + 1,
-            "title": message,
+            "title": meeting_title,
             "scheduled_at": datetime.now().isoformat(),
             "created_at": datetime.now().isoformat()
         }
         self.meetings.append(meeting)
-        return f"Meeting scheduled! Meeting #{meeting['id']}"
+        return f"Meeting scheduled! Meeting #{meeting['id']}: {meeting_title}"
     
     def _list_meetings(self) -> str:
         """List all meetings"""
