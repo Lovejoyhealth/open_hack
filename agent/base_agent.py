@@ -57,7 +57,7 @@ class BaseAgent:
         Returns:
             Response from the agent
         """
-        raise NotImplementedError("Subclasses must implement process method")
+        raise NotImplementedError("process method must be implemented by subclasses")
     
     def get_capabilities(self) -> List[str]:
         """
@@ -67,7 +67,7 @@ class BaseAgent:
         Returns:
             List of capability descriptions
         """
-        raise NotImplementedError("Subclasses must implement get_capabilities method")
+        raise NotImplementedError("get_capabilities method must be implemented by subclasses")
     
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}(name='{self.name}')"

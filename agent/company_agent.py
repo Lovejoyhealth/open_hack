@@ -1,6 +1,6 @@
 """Company Agent with business-specific capabilities"""
 from typing import Dict, List, Any, Optional
-from datetime import datetime, timedelta
+from datetime import datetime
 import re
 from .base_agent import BaseAgent
 
